@@ -1,0 +1,9 @@
+{
+  "build": "src/genComponents",
+  "sources": [
+    {
+      "name": "Button/Default",
+      "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Block/Device-iPhoneX/Hierarchy-Primary/Appearance&State-Light-Default.json"
+    }
+  ]
+}

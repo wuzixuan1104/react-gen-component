@@ -1,0 +1,9 @@
+{
+  "build": "src/genComponents",
+  "sources": [
+    {
+      "name": "",
+      "url": ""
+    }
+  ]
+}

@@ -5,7 +5,14 @@
   "module": "dist/how-long-till-lunch.esm.js",
   "browser": "dist/how-long-till-lunch.umd.js",
   "dependencies": {
-    "ms": "^2.0.0"
+    "chalk": "^4.1.0",
+    "ms": "^2.0.0",
+    "node-fetch": "^2.6.1",
+    "ramda": "^0.27.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "styled-components": "^4.3.2",
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.1",
