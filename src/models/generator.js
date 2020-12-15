@@ -28,7 +28,7 @@ const generator = {
     }
   },
   mergeTpl: async (name, html) => {
-    return tplComponent({
+    return tplComponent.render({
       name: name.split('/').pop(),
       html
     });
@@ -56,11 +56,11 @@ const generator = {
     const styleObj = get(json, 'style');
     const children = get(json, 'children');
     
-    const id = 'gen_style' + ID();
+    const id = 'gen' + ID();
     generator.styles[id] = styleObj;
 
     const addChildHtml = children ? CHILD_BLOCK : '';
-    res = `<div data-name="${name}" className="${id}">${addChildHtml}</div>`;
+    res = `<div ${tplComponent.create({name, id})}>${addChildHtml}</div>`;
     
     if (children) {
       const childrenHtml = children.map(c => {
