@@ -8,10 +8,7 @@ const config = {
 
   create: async () => {
     const tplPath = path.resolve(__dirname, '..' + path.sep, 'tpl' + path.sep + config.name);
-    console.log('tpl', tplPath);
-
     const data = await config.getContent(tplPath);
-    console.log('data', data);
 
     if (Object.keys(data).length > 0) {
       files.writeFile(data, config.name);

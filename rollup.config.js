@@ -1,6 +1,11 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import pkg from './package.json';
+import json from '@rollup/plugin-json';
+import babel from '@rollup/plugin-babel';
+import { terser } from 'rollup-plugin-terser';
+import coffeeReact from 'rollup-plugin-coffee-react'
+
 
 export default [
 	// browser-friendly UMD build
@@ -12,8 +17,17 @@ export default [
 			format: 'umd'
 		},
 		plugins: [
+			coffeeReact({
+				exclude: 'node_modules/**'
+			}),
+			json(),
+			terser(),
 			resolve(), // so Rollup can find `ms`
-			commonjs() // so Rollup can convert `ms` to an ES module
+			commonjs(), // so Rollup can convert `ms` to an ES module
+			babel({
+				exclude: '/node_modules/**', // 排除node_modules 下的文件
+				babelHelpers: 'runtime' // 防止生成多个 打包helper 函数
+			}),
 		]
 	},
 
@@ -29,6 +43,12 @@ export default [
 		output: [
 			{ file: pkg.main, format: 'cjs' },
 			{ file: pkg.module, format: 'es' }
+		],
+		plugins: [
+			json(),
+			terser(),
+			resolve(), // so Rollup can find `ms`
+			commonjs(), // so Rollup can convert `ms` to an ES module
 		]
 	}
 ];

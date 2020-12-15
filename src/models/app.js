@@ -1,5 +1,6 @@
 const get = require('../fp/get');
 const fetchJson = require('../utils/fetchJson');
+const generator = require('./generator');
 
 const app = {
   build: '',
@@ -12,14 +13,11 @@ const app = {
     for (source of app.config) {
       const name = get(source, 'name');
       const url = get(source, 'url');
-      const resp = await app.fetch(url);
-      console.log(name, resp);
+      const resp = await fetchJson(url);
+      
+      generator.component(name, resp, app.build);
     }
   },
-  fetch: async (url) => {
-    const resp = await fetchJson(url).catch(err => console.log('fetch error:', err));
-    return resp || false;
-  }
 }
 
 module.exports = app;

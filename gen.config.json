@@ -1,9 +1,21 @@
 {
-  "build": "src/genComponents",
+  "build": "genComponents",
   "sources": [
     {
       "name": "Button/Default",
       "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Block/Device-iPhoneX/Hierarchy-Primary/Appearance&State-Light-Default.json"
+    },
+    {
+      "name": "Button/Active",
+      "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Block/Device-iPhoneX/Hierarchy-Primary/Appearance&State-Light-Active/*Button.json"
+    },
+    {
+      "name": "Button/OutlineDefault",
+      "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Block/Device-iPhoneX/Hierarchy-Primary-Outline/Appearance&State-Light-Default.json"
+    },
+    {
+      "name": "Button/OutlineActive",
+      "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Block/Device-iPhoneX/Hierarchy-Primary-Outline/Appearance&State-Light-Active.json"
     }
   ]
 }
