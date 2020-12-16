@@ -2,11 +2,11 @@ const get = require('../fp/get');
 const file = require('../utils/files');
 const path = require('path');
 const formatter = require('html-formatter');
-const tplComponent = require('../tpl/component');
-const tplCss = require('../tpl/css');
+const tplComponent = require('../pattern/component');
+const tplCss = require('../pattern/css');
 const ID = require('../utils/uniqID');
 
-const CHILD_BLOCK = '{{{{{{{{{{child}}}}}}}}}}';
+const CHILD_BLOCK = '#child#';
 
 const makePath = (sub, ext = '.js') => {
   return path.resolve(__dirname, '..' + path.sep, sub + ext);
@@ -14,23 +14,37 @@ const makePath = (sub, ext = '.js') => {
 
 const generator = {
   styles: {},
+  buildPath: '',
+  makeDivJs: false,
 
-  component: async (name, json, buildPath) => {
+  setBuild: v => generator.buildPath = v,
+  component: async (name, json) => {
     generator.styles = {};
     const html = formatter.render(generator.jsonToHtml(json));
     if (html && name) {
       const content = await generator.mergeTpl(name, html);
-      // make index.js
-      file.writeFile(content, makePath(buildPath + path.sep + name + path.sep + 'index'), 'html');
-      // make style.js
+
+      generator.makeDivJs = true;
+      const mainPath = generator.buildPath + path.sep + name + path.sep;
+      
+      // create index.js
+      file.writeFile(content, makePath(mainPath + 'index'), 'html');
+
+      // create style.js
       const cssContent = generator.jsonToCss();
-      if (cssContent) file.writeFile(cssContent, makePath(buildPath + path.sep + name + path.sep + 'style', '.css'), 'html');
+      if (cssContent) file.writeFile(cssContent, makePath(mainPath + 'style', '.css'), 'html');
     }
+  },
+  divComponent: async () => {
+    if (!generator.makeDivJs) return;
+    const content = await file.readContent(makePath('tpl' + path.sep + 'div', ''), false);
+    file.writeFile(content, makePath(generator.buildPath + path.sep + 'Div'), 'html');
   },
   mergeTpl: async (name, html) => {
     return tplComponent.render({
       name: name.split('/').pop(),
-      html
+      html,
+      buildPath: generator.buildPath,
     });
   },
   jsonToCss: () => {
@@ -55,21 +69,30 @@ const generator = {
     
     const styleObj = get(json, 'style');
     const children = get(json, 'children');
+    const type = get(json, 'type');
     
-    const id = 'gen' + ID();
+    const id = generator.buildPath + ID();
     generator.styles[id] = styleObj;
-
-    const addChildHtml = children ? CHILD_BLOCK : '';
-    res = `<div ${tplComponent.create({name, id})}>${addChildHtml}</div>`;
+    
+    const addChildHtml = children ? CHILD_BLOCK : (type === 'TextNode' ? generator.excludeText(name) : '');
+    
+    res = tplComponent.div({
+      attrs: tplComponent.attr({name, id}),
+      html: tplComponent.child({id, type, html: addChildHtml}),
+    });
     
     if (children) {
       const childrenHtml = children.map(c => {
         return generator.jsonToHtml(c);
-      }).join();
-      res = res.replace(CHILD_BLOCK, childrenHtml);
+      }).join('');
+      res = res.replace(new RegExp(`(${CHILD_BLOCK})`, 'i'), childrenHtml);
     }
+    
     return res;
   },
+  excludeText: (text) => {
+    return ['$'].indexOf(text) !== -1 ? text + ' ' : text;
+  }
 }
 
 module.exports = generator;

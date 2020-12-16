@@ -10,13 +10,17 @@ const app = {
     app.config = get(content, 'sources');
   },
   run: async () => {
+    generator.setBuild(app.build);
+
     for (source of app.config) {
       const name = get(source, 'name');
       const url = get(source, 'url');
       const resp = await fetchJson(url);
-      
-      generator.component(name, resp, app.build);
+      if (resp) {
+        generator.component(name, resp);
+      }
     }
+    generator.divComponent();
   },
 }
 

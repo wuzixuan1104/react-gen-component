@@ -1,21 +1,37 @@
 {
-  "build": "genComponents",
+  "build": "d2c",
   "sources": [
     {
       "name": "Button/Default",
       "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Block/Device-iPhoneX/Hierarchy-Primary/Appearance&State-Light-Default.json"
     },
     {
-      "name": "Button/Active",
-      "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Block/Device-iPhoneX/Hierarchy-Primary/Appearance&State-Light-Active/*Button.json"
-    },
-    {
       "name": "Button/OutlineDefault",
       "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Block/Device-iPhoneX/Hierarchy-Primary-Outline/Appearance&State-Light-Default.json"
     },
     {
-      "name": "Button/OutlineActive",
+      "name": "ButtonExtra",
       "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Block/Device-iPhoneX/Hierarchy-Primary-Outline/Appearance&State-Light-Active.json"
+    },
+    {
+      "name": "Label/Check",
+      "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Table/LableCheck/Module/LableCheck/Group43/LableCheck/GroupItem.json"
+    },
+    {
+      "name": "Button/Disable",
+      "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Block/Device-iPhone8/Hierarchy-Secondary/Appearance&State-Light-Default.json"
+    },
+    {
+      "name": "Button/LightActive",
+      "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Large/Device-iPhoneX/Hierarchy-Primary/Appearance&State-Light-Active.json"
+    },
+    {
+      "name": "Button/LightLoading",
+      "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Large/Device-iPhoneX/Hierarchy-Primary/Appearance&State-Light-Loading.json"
+    },
+    {
+      "name": "Input/Alert",
+      "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Input/*TextField/Property1-TextField/Property2-Icon-Alert.json"
     }
   ]
 }
