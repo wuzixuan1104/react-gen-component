@@ -5,8 +5,10 @@ const formatter = require('html-formatter');
 const tplComponent = require('../pattern/component');
 const tplCss = require('../pattern/css');
 const ID = require('../utils/uniqID');
+const copydir = require('copy-dir');;
 
 const CHILD_BLOCK = '#child#';
+const COPY_FOLDER = 'tpl' + path.sep + 'd2c';
 
 const makePath = (sub, ext = '.js') => {
   return path.resolve(__dirname, '..' + path.sep, sub + ext);
@@ -19,6 +21,8 @@ const generator = {
 
   setBuild: v => generator.buildPath = v,
   component: async (name, json) => {
+    console.log(`- Create: ${name}`);
+    
     generator.styles = {};
     const html = formatter.render(generator.jsonToHtml(json));
     if (html && name) {
@@ -28,17 +32,30 @@ const generator = {
       const mainPath = generator.buildPath + path.sep + name + path.sep;
       
       // create index.js
-      file.writeFile(content, makePath(mainPath + 'index'), 'html');
+      const indexFilePath = makePath(mainPath + 'index');
+      file.writeFile(content, indexFilePath, 'html');
+      console.log(`-- index: ${indexFilePath}`);
 
       // create style.js
       const cssContent = generator.jsonToCss();
-      if (cssContent) file.writeFile(cssContent, makePath(mainPath + 'style', '.css'), 'html');
+      const cssFilePath = makePath(mainPath + 'style', '.css');
+      if (cssContent) file.writeFile(cssContent, cssFilePath, 'html');
+      console.log(`-- css: ${indexFilePath}`);
     }
   },
-  divComponent: async () => {
+  divComponent: () => {
     if (!generator.makeDivJs) return;
-    const content = await file.readContent(makePath('tpl' + path.sep + 'div', ''), false);
-    file.writeFile(content, makePath(generator.buildPath + path.sep + 'Div'), 'html');
+    const srcDir = path.resolve(__dirname, '..' + path.sep, COPY_FOLDER);
+    const destDir = path.resolve(__dirname, '..' + path.sep, generator.buildPath);
+    
+    copydir(srcDir, destDir, {
+      utimes: true,  // keep add time and modify time
+      mode: true,    // keep file mode
+      cover: true    // cover file when exists, default is true
+    }, function(err){
+      if(err) throw err;
+      console.log('@copy Tpl method: finish');
+    });
   },
   mergeTpl: async (name, html) => {
     return tplComponent.render({

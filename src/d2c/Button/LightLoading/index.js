@@ -6,14 +6,14 @@ import './style.css';
 
 const LightLoading = ({ props }) => {
   return (
-    <Div name="Size=Large, Device=iPhone X, Hierarchy=Primary, Appearance&State=Light - Loading" elId="d2c_6zlt4itsr" props={props}>
-	<Div name="Group 18" elId="d2c_2nl9iihyf" props={props}>
-		<Div name="*Button" elId="d2c_cglhf8osw" props={props}>
-			<Div name="Active" elId="d2c_j295a08l6" props={props}>{get(props, 'd2c_j295a08l6.children') || 'Active'}</Div>
+    <Div name="Size=Large, Device=iPhone X, Hierarchy=Primary, Appearance&State=Light - Loading" elId="d2c_jfsm1avvd" props={props}>
+	<Div name="Group 18" elId="d2c_57bdnkv1u" props={props}>
+		<Div name="*Button" elId="d2c_2l4anveyw" props={props}>
+			<Div name="Active" elId="d2c_ox6ocgykz" props={props}>{get(props, 'd2c_ox6ocgykz.children') || 'Active'}</Div>
 		</Div>
-		<Div name="Rolling-1s-80px 1" elId="d2c_sfebcgdbl" props={props}>
-			<Div name="Rectangle" elId="d2c_jewkrjm3t" props={props}></Div>
-			<Div name="Oval" elId="d2c_k8qks2lxg" props={props}></Div>
+		<Div name="Rolling-1s-80px 1" elId="d2c_g3bjkmgx4" props={props}>
+			<Div name="Rectangle" elId="d2c_y77pjdvro" props={props}></Div>
+			<Div name="Oval" elId="d2c_49yze0hlf" props={props}></Div>
 		</Div>
 	</Div>
 </Div>

@@ -6,8 +6,8 @@ import './style.css';
 
 const Default = ({ props }) => {
   return (
-    <Div name="Size=Block, Device=iPhone X, Hierarchy=Primary, Appearance&State=Light - Default" elId="d2c_j8j2w2j6o" props={props}>
-	<Div name="Active" elId="d2c_wieofoukg" props={props}>{get(props, 'd2c_wieofoukg.children') || 'Active'}</Div>
+    <Div name="Size=Block, Device=iPhone X, Hierarchy=Primary, Appearance&State=Light - Default" elId="d2c_guhrob77p" props={props}>
+	<Div name="Active" elId="d2c_dz67lr059" props={props}>{get(props, 'd2c_dz67lr059.children') || 'Active'}</Div>
 </Div>
   );
 };

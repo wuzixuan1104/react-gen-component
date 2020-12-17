@@ -10,10 +10,6 @@
       "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Block/Device-iPhoneX/Hierarchy-Primary-Outline/Appearance&State-Light-Default.json"
     },
     {
-      "name": "ButtonExtra",
-      "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Button/*Button/Size-Block/Device-iPhoneX/Hierarchy-Primary-Outline/Appearance&State-Light-Active.json"
-    },
-    {
       "name": "Label/Check",
       "url": "https://test.ioa.tw/M_iOS_UIKits/Component/Table/LableCheck/Module/LableCheck/Group43/LableCheck/GroupItem.json"
     },

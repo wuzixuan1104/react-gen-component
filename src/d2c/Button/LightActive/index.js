@@ -6,9 +6,9 @@ import './style.css';
 
 const LightActive = ({ props }) => {
   return (
-    <Div name="Size=Large, Device=iPhone X, Hierarchy=Primary, Appearance&State=Light - Active" elId="d2c_8dwnpsrnk" props={props}>
-	<Div name="*Button" elId="d2c_a0d4ulv4r" props={props}>
-		<Div name="Active" elId="d2c_sx11fu4gv" props={props}>{get(props, 'd2c_sx11fu4gv.children') || 'Active'}</Div>
+    <Div name="Size=Large, Device=iPhone X, Hierarchy=Primary, Appearance&State=Light - Active" elId="d2c_t6jqpe3pv" props={props}>
+	<Div name="*Button" elId="d2c_qauj3z7ph" props={props}>
+		<Div name="Active" elId="d2c_kbwcextvj" props={props}>{get(props, 'd2c_kbwcextvj.children') || 'Active'}</Div>
 	</Div>
 </Div>
   );

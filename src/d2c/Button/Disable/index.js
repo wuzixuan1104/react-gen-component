@@ -6,9 +6,9 @@ import './style.css';
 
 const Disable = ({ props }) => {
   return (
-    <Div name="Size=Block, Device=iPhone 8, Hierarchy=Secondary, Appearance&State=Light - Default" elId="d2c_3mguhaf4n" props={props}>
-	<Div name="*Button" elId="d2c_77dt5i54u" props={props}>
-		<Div name="Active" elId="d2c_0smoaar1f" props={props}>{get(props, 'd2c_0smoaar1f.children') || 'Active'}</Div>
+    <Div name="Size=Block, Device=iPhone 8, Hierarchy=Secondary, Appearance&State=Light - Default" elId="d2c_bs5o7ukld" props={props}>
+	<Div name="*Button" elId="d2c_o60ceks37" props={props}>
+		<Div name="Active" elId="d2c_31358pbfl" props={props}>{get(props, 'd2c_31358pbfl.children') || 'Active'}</Div>
 	</Div>
 </Div>
   );
